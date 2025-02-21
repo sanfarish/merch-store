@@ -2,8 +2,9 @@ import sample from "../assets/sample.png"
 
 function Cart() {
   const cart = [
-    { id: 1, name: "Vinyl", price: 40, img: "assets/sample.png", qty: 1 },
-    { id: 2, name: "Digital Album Best If Needed", price: 20, img: "assets/sample.png", qty: 1 },
+    { id: 1, name: "Vinyl - Krakatoa", price: 60, img: "assets/sample.png", qty: 2 },
+    { id: 2, name: "Digital Album - Lorem, ipsum.", price: 20, img: "assets/sample.png", qty: 1 },
+    { id: 3, name: "Krakatoa Hoodie - L", price: 40, img: "assets/sample.png", qty: 2 }
   ]
 
   return (
@@ -22,7 +23,7 @@ function Cart() {
                 <h4 className="text-lg">{"$ " + item.price + ",00"}</h4>
                 <div className="inline-block border">
                   <input className="mx-1 px-1 cursor-pointer" type="button" value="-" />
-                  <input className="w-8 text-center focus:outline-1" type="text" name="" id="" defaultValue={1} />
+                  <input className="w-8 text-center focus:outline-1" type="text" name="" id="" defaultValue={item.qty} />
                   <input className="mx-1 px-1 cursor-pointer" type="button" value="+" />
                 </div>
               </div>
