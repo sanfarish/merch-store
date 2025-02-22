@@ -1,8 +1,13 @@
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import sample from "../assets/sample.png"
+import { useState } from "react"
+import Product from "../components/Product"
 
 function Home() {
+  // eslint-disable-next-line no-unused-vars
+  const [active, setActive] = useState(true)
+
   const products = [
     { id: 1, name: "T Shirt", price: 10.00, img: "assets/T-Shirt.png" },
     { id: 2, name: "Pants", price: 29.00, img: "assets/Pants.png" },
@@ -28,6 +33,7 @@ function Home() {
         </ul>
       </main>
       <Footer />
+      {active && <Product />}
     </div>
   )
 }
