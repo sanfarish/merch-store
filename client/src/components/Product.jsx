@@ -1,17 +1,21 @@
 import sample from '../assets/sample.png';
+import useData from '../hooks/useData';
 
-function Product() {
+function Product({ item }) {
+  // eslint-disable-next-line no-unused-vars
+  const [product, setProduct, modal, setModal] = useData()
+
   return (
     <section className='absolute h-screen w-screen flex'>
       <div className='bg-gray-500 m-auto w-2xl h-full relative flex flex-col justify-center items-center gap-4'>
-        <input className='bg-red-500 absolute top-5 right-5 px-2' type="button" value="X" />
+        <input className='bg-red-500 absolute top-5 right-5 px-2' type="button" value="X" onClick={() => setModal(!modal)} />
         <div className='flex gap-2 items-center'>
           <input className='bg-gray-700 text-3xl px-2 rounded-4xl' type="button" value="<" />
           <img className='w-sm' src={sample} alt="sample" />
           <input className='bg-gray-700 text-3xl px-2 rounded-4xl' type="button" value=">" />
         </div>
-        <h2 className='text-2xl'>Product Name</h2>
-        <h3 className='text-xl'>$10.00</h3>
+        <h2 className='text-2xl'>{item.name}</h2>
+        <h3 className='text-xl'>${item.price}.00</h3>
         <div className='flex gap-2'>
           <p>Size:</p>
           <div>

@@ -1,12 +1,11 @@
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import sample from "../assets/sample.png"
-import { useState } from "react"
 import Product from "../components/Product"
+import useData from "../hooks/useData"
 
 function Home() {
-  // eslint-disable-next-line no-unused-vars
-  const [active, setActive] = useState(true)
+  const [product, setProduct, modal, setModal ] = useData()
 
   const products = [
     { id: 1, name: "T Shirt", price: 10.00, img: "assets/T-Shirt.png" },
@@ -24,16 +23,18 @@ function Home() {
           {products.map(item => {
             return (
               <li className="flex flex-col" key={item.id}>
-                <img className="rounded-lg shadow-lg" src={sample} alt={item.name} />
-                <h3 className="pl-2 text-2xl">{item.name}</h3>
-                <h4 className="pl-2 text-lg">{"$ " + item.price + ",00"}</h4>
+                <a href="#" className="flex flex-col items-center" onClick={() => {setModal(!modal); setProduct(item)}}>
+                  <img className="rounded-lg shadow-lg" src={sample} alt={item.name} />
+                  <h3 className="pl-2 text-2xl">{item.name}</h3>
+                  <h4 className="pl-2 text-lg">{"$ " + item.price + ",00"}</h4>
+                </a>
               </li>
             )
           })}
         </ul>
       </main>
       <Footer />
-      {active && <Product />}
+      {modal && <Product item={product} />}
     </div>
   )
 }
