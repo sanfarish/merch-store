@@ -6,10 +6,10 @@ function Product({ item }) {
   const [product, setProduct, modal, setModal] = useData()
 
   return (
-    <section className='absolute h-screen w-screen flex'>
-      <div className='bg-gray-500 m-auto w-2xl h-full relative flex flex-col justify-center items-center gap-4'>
+    <section className='absolute h-full w-full flex'>
+      <div className='bg-gray-500 m-auto h-full relative flex flex-col justify-center items-center gap-4'>
         <input className='bg-red-500 absolute top-5 right-5 px-2' type="button" value="X" onClick={() => setModal(!modal)} />
-        <div className='flex gap-2 items-center'>
+        <div className='bg-orange-500 flex gap-2 items-center justify-center'>
           <input className='bg-gray-700 text-3xl px-2 rounded-4xl' type="button" value="<" />
           <img className='w-sm' src={sample} alt="sample" />
           <input className='bg-gray-700 text-3xl px-2 rounded-4xl' type="button" value=">" />
