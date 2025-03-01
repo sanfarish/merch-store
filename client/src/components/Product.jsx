@@ -1,5 +1,5 @@
 import sample from '../assets/sample.png';
-import useData from '../hooks/useData';
+import useData from '../hooks/useProducts';
 
 function Product({ item }) {
   // eslint-disable-next-line no-unused-vars

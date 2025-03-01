@@ -3,7 +3,7 @@ function Menu() {
   const menuContent = [ "Shop", "Privacy Policy", "Lorem, ipsum." ]
   
   return (
-    <section className="bg-gray-200 flex flex-col gap-4 p-6 fixed top-14 left-0 h-full w-full sm:w-sm">
+    <section className="bg-gray-200 flex flex-col gap-4 p-6 fixed top-14 left-0 h-full w-full sm:w-sm no-doc-scroll">
       <ul className="flex flex-col gap-4">
         {menuContent.map(item => {
           return (

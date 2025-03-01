@@ -1,12 +1,7 @@
-import sample from "../assets/sample.png"
 
 function Checkout() {
   const cart = [
-    { id: 1, name: "T Shirt", price: 10, qty: 1, img: "assets/T-Shirt.png" },
-    { id: 2, name: "T Shirt", price: 10, qty: 1, img: "assets/T-Shirt.png" },
-    { id: 3, name: "T Shirt", price: 10, qty: 1, img: "assets/T-Shirt.png" },
-    { id: 4, name: "T Shirt", price: 10, qty: 1, img: "assets/T-Shirt.png" },
-    { id: 5, name: "T Shirt", price: 10, qty: 1, img: "assets/T-Shirt.png" },
+    { id: 1, name: "Sample Product 1", price: 10.00, image: "sample-1.png", qty: 1 },
   ]
 
 
@@ -17,7 +12,7 @@ function Checkout() {
           {cart.map(item => {
             return (
               <li key={item.id} className="flex gap-4 items-center">
-                <img src={sample} alt={item.name} className="w-20" />
+                <img src={item.image} alt={item.name} className="w-20" />
                 <div>
                   <div className="truncate w-36 sm:w-52">
                     {item.name.length > 20
