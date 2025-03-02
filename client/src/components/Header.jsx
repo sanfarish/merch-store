@@ -1,13 +1,12 @@
-import { useState } from "react"
-import Menu from "./Menu"
 import useCart from "../hooks/useCart"
+import useMenu from "../hooks/useMenu"
 
 function Header() {
   const { setCart } = useCart()
-  const [menuSwitch, setMenuSwitch] = useState(false)
+  const { setMenuOpen } = useMenu()
 
   function handleMenu() {
-    setMenuSwitch(!menuSwitch)
+    setMenuOpen(prev => !prev)
   }
 
   function handleCart() {
@@ -21,7 +20,6 @@ function Header() {
       <input className="cursor-pointer" type="button" value="HOME" onClick={handleMenu} />
       <h1 className="text-4xl font-bold">Merch Store</h1>
       <input className="cursor-pointer" type="button" value="CART" onClick={handleCart} />
-      {menuSwitch && <Menu />}
     </header>
   )
 }

@@ -3,10 +3,13 @@ import Header from "../components/Header"
 import Cart from "../components/Cart"
 import useProducts from "../hooks/useProducts"
 import useCart from "../hooks/useCart"
+import useMenu from "../hooks/useMenu"
+import Menu from "../components/Menu"
 
 function Home() {
   const { products } = useProducts()
   const { cart } = useCart()
+  const { menuOpen } = useMenu()
   
   return (
     <div className="bg-orange-200 flex flex-col">
@@ -29,7 +32,8 @@ function Home() {
         </ul>
       </main>
       <Footer />
-      {cart.active && <div className="backdrop-filter fixed inset-0"></div>}
+      {(cart.active || menuOpen) && <div className="backdrop-filter fixed inset-0"></div>}
+      {menuOpen && <Menu />}
       {cart.active && <Cart />}
     </div>
   )

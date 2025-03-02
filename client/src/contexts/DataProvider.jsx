@@ -28,6 +28,7 @@ function DataProvider({ children }) {
     ],
     subtotal: 2186.46
   })
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <DataContext.Provider
@@ -35,7 +36,9 @@ function DataProvider({ children }) {
         products,
         setProducts,
         cart,
-        setCart
+        setCart,
+        menuOpen,
+        setMenuOpen
       }}
     >
       {children}

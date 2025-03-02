@@ -1,16 +1,25 @@
+import useMenu from "../hooks/useMenu"
 
 function Menu() {
-  const menuContent = [ "Shop", "Privacy Policy", "Lorem, ipsum." ]
+  const { setMenuOpen } = useMenu()
+
+  function handleMenu() {
+    setMenuOpen(prev => !prev)
+  }
   
   return (
-    <section className="bg-gray-200 flex flex-col gap-4 p-6 fixed top-14 left-0 h-full w-full sm:w-sm no-doc-scroll">
+    <section className="bg-gray-200 fixed top-0 left-0 h-full w-full sm:w-sm flex flex-col gap-4 p-6 no-doc-scroll">
+      <input type="button" value="close X" onClick={handleMenu} className="border-1 border-gray-400 cursor-pointer mr-auto px-2" />
       <ul className="flex flex-col gap-4">
-        {menuContent.map(item => {
-          return (
-            // <li key={item} className="text-lg hover:underline cursor-pointer">{item}</li> altenative to the next line
-            <li key={item}><input className="text-lg hover:underline cursor-pointer" type="button" value={item} /></li>
-          )
-        })}
+        <li>
+          <a href="#" className="ml-6 text-lg hover:underline">Shop</a>
+        </li>
+        <li>
+          <a href="#" className="ml-6 text-lg hover:underline">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#" className="ml-6 text-lg hover:underline">Contact Us</a>
+        </li>
       </ul>
     </section>
   )
