@@ -19,8 +19,9 @@
   overflow:hidden;
 }
 
-.backdrop {
+.backdrop-filter {
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 /* :root {

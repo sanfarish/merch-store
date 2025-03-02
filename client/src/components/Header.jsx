@@ -1,28 +1,27 @@
 import { useState } from "react"
 import Menu from "./Menu"
-import Cart from "./Cart"
+import useCart from "../hooks/useCart"
 
 function Header() {
-  const [cartSwitch, setCartSwitch] = useState(false)
+  const { setCart } = useCart()
   const [menuSwitch, setMenuSwitch] = useState(false)
 
-  function handleMenu(e) {
-    e.preventDefault()
+  function handleMenu() {
     setMenuSwitch(!menuSwitch)
   }
 
-  function handleCart(e) {
-    e.preventDefault()
-    setCartSwitch(!cartSwitch)
+  function handleCart() {
+    setCart(prev => {
+      return { ...prev, active: !prev.active }
+    })
   }
   
   return (
-    <header className="bg-orange-300 flex justify-around items-center h-14">
+    <header className="bg-orange-300 sticky top-0 flex justify-around items-center h-14">
       <input className="cursor-pointer" type="button" value="HOME" onClick={handleMenu} />
-      <h1 className="text-4xl">Merch Store</h1>
+      <h1 className="text-4xl font-bold">Merch Store</h1>
       <input className="cursor-pointer" type="button" value="CART" onClick={handleCart} />
       {menuSwitch && <Menu />}
-      {cartSwitch && <Cart />}
     </header>
   )
 }

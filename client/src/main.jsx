@@ -15,7 +15,11 @@ createRoot(document.getElementById('root')).render(
             <Home />
           </DataProvider>
         } />
-        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/checkout' element={
+          <DataProvider>
+            <Checkout />
+          </DataProvider>
+        } />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

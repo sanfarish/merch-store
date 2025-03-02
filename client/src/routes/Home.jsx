@@ -1,9 +1,12 @@
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import Cart from "../components/Cart"
 import useProducts from "../hooks/useProducts"
+import useCart from "../hooks/useCart"
 
 function Home() {
   const { products } = useProducts()
+  const { cart } = useCart()
   
   return (
     <div className="bg-orange-200 flex flex-col">
@@ -26,6 +29,8 @@ function Home() {
         </ul>
       </main>
       <Footer />
+      {cart.active && <div className="backdrop-filter fixed inset-0"></div>}
+      {cart.active && <Cart />}
     </div>
   )
 }
