@@ -1,14 +1,13 @@
 import useCart from "../hooks/useCart"
+import useOpen from "../hooks/useOpen"
 
 function Cart() {
-  const { cart, setCart } = useCart()
+  const { cart } = useCart()
+  const { setOpen } = useOpen()
 
   function handleClose() {
-    setCart(prev => {
-      return {
-        ...prev,
-        active: false
-      }
+    setOpen(prev => {
+      return { ...prev, cart: !prev.cart }
     })
   }
 

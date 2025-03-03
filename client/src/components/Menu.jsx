@@ -1,14 +1,16 @@
-import useMenu from "../hooks/useMenu"
+import useOpen from "../hooks/useOpen"
 
 function Menu() {
-  const { setMenuOpen } = useMenu()
+  const { setOpen } = useOpen()
 
   function handleMenu() {
-    setMenuOpen(prev => !prev)
+    setOpen(prev => {
+      return { ...prev, menu: !prev.menu }
+    })
   }
   
   return (
-    <section className="bg-gray-200 fixed top-0 left-0 h-full w-full sm:w-sm flex flex-col gap-4 p-6 no-doc-scroll">
+    <section className="bg-gray-200 fixed top-0 left-0 h-full w-full sm:w-sm flex flex-col gap-4 p-4 sm:p-6 no-doc-scroll">
       <input type="button" value="close X" onClick={handleMenu} className="border-1 border-gray-400 cursor-pointer mr-auto px-2" />
       <ul className="flex flex-col gap-4">
         <li>

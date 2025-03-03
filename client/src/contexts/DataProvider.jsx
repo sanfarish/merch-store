@@ -14,7 +14,6 @@ function DataProvider({ children }) {
     { id: 9, name: "Sample Product 9", price: 75.50, image: "sample-3.png" }
   ])
   const [cart, setCart] = useState({
-    active: false,
     items: [
       { id: 1, name: "Sample Product 1 - Lorem, Ipsum.", price: 50.00, image: "sample-1.png", qty: 23 },
       { id: 5, name: "Sample Product 5", price: 99.99, image: "sample-2.png", qty: 4 },
@@ -28,7 +27,11 @@ function DataProvider({ children }) {
     ],
     subtotal: 2186.46
   })
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState({
+    product: false,
+    cart: false,
+    menu: false
+  })
 
   return (
     <DataContext.Provider
@@ -37,8 +40,8 @@ function DataProvider({ children }) {
         setProducts,
         cart,
         setCart,
-        menuOpen,
-        setMenuOpen
+        open,
+        setOpen
       }}
     >
       {children}

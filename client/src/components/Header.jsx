@@ -1,17 +1,17 @@
-import useCart from "../hooks/useCart"
-import useMenu from "../hooks/useMenu"
+import useOpen from "../hooks/useOpen"
 
 function Header() {
-  const { setCart } = useCart()
-  const { setMenuOpen } = useMenu()
+  const { setOpen } = useOpen()
 
   function handleMenu() {
-    setMenuOpen(prev => !prev)
+    setOpen(prev => {
+      return { ...prev, menu: true }
+    })
   }
 
   function handleCart() {
-    setCart(prev => {
-      return { ...prev, active: !prev.active }
+    setOpen(prev => {
+      return { ...prev, cart: !prev.cart }
     })
   }
   

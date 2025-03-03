@@ -2,14 +2,12 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Cart from "../components/Cart"
 import useProducts from "../hooks/useProducts"
-import useCart from "../hooks/useCart"
-import useMenu from "../hooks/useMenu"
 import Menu from "../components/Menu"
+import useOpen from "../hooks/useOpen"
 
 function Home() {
   const { products } = useProducts()
-  const { cart } = useCart()
-  const { menuOpen } = useMenu()
+  const { open } = useOpen()
   
   return (
     <div className="bg-orange-200 flex flex-col">
@@ -19,10 +17,10 @@ function Home() {
           {products.map(item => {
             return (
               <li className="flex flex-col" key={item.id}>
-                <a>
+                <a href="#">
                   <img className="shadow-lg cursor-pointer" src={item.image} alt={item.name} />
                 </a>
-                <a>
+                <a href="#">
                   <h3 className="pl-2 text-md sm:text-2xl hover:underline cursor-pointer">{item.name}</h3>
                 </a>
                 <h4 className="pl-2 text-sm sm:text-lg">{"$ " + item.price}</h4>
@@ -32,9 +30,9 @@ function Home() {
         </ul>
       </main>
       <Footer />
-      {(cart.active || menuOpen) && <div className="backdrop-filter fixed inset-0"></div>}
-      {menuOpen && <Menu />}
-      {cart.active && <Cart />}
+      {(open.cart || open.menu) && <div className="backdrop-filter fixed inset-0"></div>}
+      {open.menu && <Menu />}
+      {open.cart && <Cart />}
     </div>
   )
 }
