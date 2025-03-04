@@ -32,6 +32,7 @@ function DataProvider({ children }) {
     cart: false,
     menu: false
   })
+  const [detail, setDetail] = useState({})
 
   return (
     <DataContext.Provider
@@ -41,7 +42,9 @@ function DataProvider({ children }) {
         cart,
         setCart,
         open,
-        setOpen
+        setOpen,
+        detail,
+        setDetail
       }}
     >
       {children}

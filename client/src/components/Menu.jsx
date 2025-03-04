@@ -20,6 +20,9 @@ function Menu() {
           <a href="#" className="ml-6 text-lg hover:underline">Privacy Policy</a>
         </li>
         <li>
+          <a href="#" className="ml-6 text-lg hover:underline">Terms & Conditions</a>
+        </li>
+        <li>
           <a href="#" className="ml-6 text-lg hover:underline">Contact Us</a>
         </li>
       </ul>
