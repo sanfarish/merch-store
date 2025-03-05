@@ -1,56 +1,48 @@
+import useCart from "../hooks/useCart"
 
 function Checkout() {
-  const cart = [
-    { id: 1, name: "Sample Product 1", price: 10.00, image: "sample-1.png", qty: 1 },
-  ]
+  const { cart } = useCart()
 
 
   return (
-    <div className="bg-orange-200 flex flex-col p-6 justify-center items-center gap-4">
-      <div>
-        <ul className="flex flex-col gap-4 overflow-y-auto max-h-96">
-          {cart.map(item => {
-            return (
-              <li key={item.id} className="flex gap-4 items-center">
-                <img src={item.image} alt={item.name} className="w-20" />
-                <div>
-                  <div className="truncate w-36 sm:w-52">
-                    {item.name.length > 20
-                    ? <h3 className="w-fit text-xl animate-marquee">{item.name} {item.name}</h3>
-                    : <h3 className="w-fit text-xl">{item.name}</h3>}
-                  </div>
-                  <h4 className="text-lg">{"$ " + item.price + ",00"}</h4>
-                  <h4>{item.qty}</h4>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      <div>
-          <label htmlFor="customer_name" className="block mb-2 text-sm font-medium">First name</label>
-          <input type="text" name="customer_name" id="customer_name" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="John Doe" required />
-      </div>
-      <div>
-          <label htmlFor="customer_address" className="block mb-2 text-sm font-medium">Address</label>
-          <input type="text" id="customer_address" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="US state" required />
-      </div>
-      <div>
-          <label htmlFor="customer_email" className="block mb-2 text-sm font-medium">Email</label>
-          <input type="email" id="customer_email" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="john@mail.com" required />
-      </div>
-      <div>
-        <label htmlFor="shipment_options" className="block mb-2 text-sm font-medium">Shipment Options</label>
+    <div className="bg-orange-200 flex flex-col gap-6 p-6">
+      <ul className="max-h-96 flex flex-col gap-4 p-2 border-2 overflow-y-auto">
+      {cart.items.map(item => {
+        return (
+          <li key={item.id} className="flex gap-4">
+            <img className="w-24" src={item.image} alt={item.name} />
+            <div className="grow flex flex-col justify-between truncate">
+              <span className="font-medium text-lg truncate">{item.name}</span>
+              <div className="flex justify-between">
+                <span>{"$ " + Number(item.price).toFixed(2)}</span>
+                <span>Quantity: {item.qty}</span>
+              </div>
+            </div>
+          </li>
+        )
+      })}
+      </ul>
+      <label htmlFor="customer-name" className="text-sm font-medium">
+        First name
+        <input type="text" name="customer-name" id="customer-name" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="John Doe" required />
+      </label>
+      <label htmlFor="customer_address" className="block mb-2 text-sm font-medium">
+        Address
+        <input type="text" id="customer_address" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="US state" required />
+      </label>
+      <label htmlFor="customer_email" className="block mb-2 text-sm font-medium">
+        Email
+        <input type="email" id="customer_email" className="border-2 text-sm rounded-lg block w-full p-2.5" placeholder="john@mail.com" required />
+      </label>
+      <label htmlFor="shipment_options" className="block mb-2 text-sm font-medium">
+        Shipment Options
         <select id="shipment_options" className="border-2 text-sm rounded-lg block w-full p-2.5">
           <option value="standard">Standard</option>
           <option value="express">Express</option>
           <option value="overnight">Overnight</option>
         </select>
-      </div>
-      <div className="flex flex-col items-center">
-        <p>*only available payment methods is through QR code.</p>
-        <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button" value="Pay" />
-      </div>
+      </label>
+      <input className="bg-orange-600 hover:bg-orange-500 active:bg-orange-700 text-white font-bold py-2 px-4 rounded" type="button" value="Pay" />
     </div>
   )
 }

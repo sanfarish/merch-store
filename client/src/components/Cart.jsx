@@ -45,7 +45,9 @@ function Cart() {
         </div>
         <span className="text-gray-600">Tax and shipping not included.</span>
       </div>
-      <input className="bg-orange-600 text-white p-2 rounded-md shadow-lg hover:bg-orange-700 active:bg-orange-800 cursor-pointer" type="button" value="Checkout" />
+      <a className="flex flex-col" href="/checkout">
+        <input className="bg-orange-600 text-white p-2 rounded-md shadow-lg hover:bg-orange-700 active:bg-orange-800 cursor-pointer" type="button" value="Checkout" />
+      </a>
     </section>
   )
 }
